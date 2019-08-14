@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseWeapon
+[CreateAssetMenu(fileName = "WeaponPrototype", menuName = "WeaponPrototype", order = 1)]
+public class WeaponPrototype : ScriptableObject
 {
     public enum Elements
     {
@@ -29,17 +30,15 @@ public abstract class BaseWeapon
         new ElementKeyMapEntry("KineticKey", Elements.Kinetic),
     };
 
-    public abstract IReadOnlyList<Elements> ElementCombination { get; }
+    public Elements[] ElementCombination;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /// <summary>
+    /// Particle system to display infront of the ship when this weapon is selected.
+    /// </summary>
+    public GameObject selectedParticleSystem;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// Behaviour to instantiate when the weapon is selected.
+    /// </summary>
+    public GameObject weaponGameObject;
 }

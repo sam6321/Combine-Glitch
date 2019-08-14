@@ -22,19 +22,21 @@ namespace Common
             Dictionary<T, int> counts = new Dictionary<T, int>();
             foreach(T element in self)
             {
-                int value = 0;
-                if (counts.TryGetValue(element, out value))
+                if(!counts.ContainsKey(element))
                 {
-                    value++;
+                    counts.Add(element, 1);
                 }
-                counts.Add(element, value);
+                else
+                {
+                    counts[element]++;
+                }
             }
 
             foreach(T element in other)
             {
                 if(counts.TryGetValue(element, out int value))
                 {
-                    counts.Add(element, value - 1);
+                    counts[element] = value - 1;
                 }
                 else
                 {
