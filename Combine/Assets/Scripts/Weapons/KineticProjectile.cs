@@ -6,8 +6,8 @@ public class KineticProjectile : MonoBehaviour
     [SerializeField]
     private float lifeTime = 3.0f;
 
-    [SerializeField]
-    private float spawnForce = 10;
+    public float force = 10;
+    public float spread = 5.0f;
 
     private Rigidbody2D rb;
 
@@ -15,12 +15,12 @@ public class KineticProjectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.forward * spawnForce;
+        rb.velocity = Quaternion.AngleAxis(Random.Range(-spread, spread), Vector3.forward) * transform.forward * force;
 
         Invoke("DestroySelf", lifeTime);
     }
 
-    void DestroySelf()
+    protected virtual void DestroySelf()
     {
         Destroy(gameObject);
     }

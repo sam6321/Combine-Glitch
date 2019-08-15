@@ -15,3 +15,5 @@ MonoBehaviour:
   ElementCombination: 0100000002000000
   selectedParticleSystem: {fileID: 1206605177232866044, guid: 3e6285138f7b4ba43acb89b49f870cd7,
     type: 3}
+  weaponGameObject: {fileID: 7788626488233288520, guid: 356093ecb7feaab49acf44b3a0184043,
+    type: 3}
